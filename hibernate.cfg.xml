@@ -1,0 +1,28 @@
+<!--  DTD removed — Hibernate resolves it internally from its own JAR  -->
+<hibernate-configuration>
+<session-factory>
+<!--  ── Database Connection (MySQL) ──────────────────  -->
+<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+<property name="hibernate.connection.url">
+  <![CDATA[jdbc:mysql://localhost:3306/bloom_store?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true]]>
+</property>
+<property name="hibernate.connection.username">root</property>
+<property name="hibernate.connection.password">PASSWORD</property>
+<!--  ── Connection Pool ──────────────────────────────  -->
+<property name="hibernate.c3p0.min_size">3</property>
+<property name="hibernate.c3p0.max_size">20</property>
+<property name="hibernate.c3p0.timeout">300</property>
+<!--  ── Hibernate Settings ───────────────────────────  -->
+<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+<property name="hibernate.hbm2ddl.auto">update</property>
+<!--  update = create tables on first run, then update schema  -->
+<!--  ── Logging ──────────────────────────────────────  -->
+<property name="hibernate.show_sql">true</property>
+<property name="hibernate.format_sql">false</property>
+<!--  ── Entity Mappings ──────────────────────────────  -->
+<mapping class="com.bloom.model.User"/>
+<mapping class="com.bloom.model.Product"/>
+<mapping class="com.bloom.model.Order"/>
+<mapping class="com.bloom.model.CartItem"/>
+</session-factory>
+</hibernate-configuration>
